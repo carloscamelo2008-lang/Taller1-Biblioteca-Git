@@ -25,9 +25,26 @@ public class Main {
         customers.add(customer);
         System.out.println("Cliente creado correctamente");
     }
+    public static void listcustomers(){
+        if (customers.isEmpty()){
+            System.out.println("No hay clientes registrados. ");
+            return;
+        }
+        System.out.println("---- LISTA DE CLIENTES----");
+
+        for(Customer customer : customers){
+
+            System.out.println("ID: " + customer.getId());
+            System.out.println("Nombre: " + customer.getName());
+            System.out.println("Telefono " + customer.getPhone());
+            System.out.println("Correo: " + customer.getEmail());
+            System.out.println("----------------------------");
+        }
+    }
 
     public static void main(String[] args) {
         createCustomer();
+        listcustomers();
 
 
 
