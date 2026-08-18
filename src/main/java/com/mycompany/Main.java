@@ -25,7 +25,7 @@ public class Main {
         customers.add(customer);
         System.out.println("Cliente creado correctamente");
     }
-    public static void listcustomers(){
+    public static void listCustomers(){
         if (customers.isEmpty()){
             System.out.println("No hay clientes registrados. ");
             return;
@@ -41,10 +41,28 @@ public class Main {
             System.out.println("----------------------------");
         }
     }
+    public static void findCustomer() {
+        System.out.print("Ingrese el ID del cliente a buscar: ");
+        String id = sc.nextLine();
+        for (Customer customer : customers) {
+           if (customer.getId().equals(id)){
+               System.out.println("=== CLIENTE ENCONTRADO ===");
+               System.out.println("ID: " + customer.getId());
+               System.out.println("Nombre: " + customer.getName());
+               System.out.println("Teléfono: " + customer.getPhone());
+               System.out.println("Correo: " + customer.getEmail());
+               return;
+           }
+
+        }
+        System.out.println("Cliente no encontrado.");
+    }
 
     public static void main(String[] args) {
         createCustomer();
-        listcustomers();
+        createCustomer();
+        listCustomers();
+        findCustomer();
 
 
 
