@@ -86,6 +86,28 @@ public class Main {
 
         System.out.println("Cliente no encontrado.");
     }
+    public static void deleteCustomer() {
+
+        System.out.print("Ingrese el ID del cliente a eliminar: ");
+        String id = sc.nextLine();
+
+        Customer customerToDelete = null;
+
+        for (Customer customer : customers) {
+            if (customer.getId().equals(id)) {
+                customerToDelete = customer;
+                break;
+            }
+        }
+
+        if (customerToDelete != null) {
+            customers.remove(customerToDelete);
+            System.out.println("Cliente eliminado correctamente.");
+            return;
+        }
+
+        System.out.println("Cliente no encontrado.");
+    }
 
 
     //main
@@ -93,10 +115,10 @@ public class Main {
         createCustomer();
         createCustomer();
         listCustomers();
-        findCustomer();
-        updateCustomer();
-        listCustomers();
 
+        deleteCustomer();
+
+        listCustomers();
 
 
 
