@@ -232,23 +232,61 @@ public class Main {
         System.out.println("Libro no encontrado.");
     }
     //loan
+    public static void createLoan() {
+
+        System.out.print("Ingrese el ID del cliente: ");
+        String customerId = sc.nextLine();
+
+        Customer customerFound = null;
+
+        for (Customer customer : customers) {
+            if (customer.getId().equals(customerId)) {
+                customerFound = customer;
+                break;
+            }
+        }
+
+        if (customerFound == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        System.out.print("Ingrese el código del libro: ");
+        String bookCode = sc.nextLine();
+
+        Book bookFound = null;
+
+        for (Book book : books) {
+            if (book.getCode().equals(bookCode)) {
+                bookFound = book;
+                break;
+            }
+        }
+
+        if (bookFound == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        System.out.print("Ingrese la fecha del préstamo: ");
+        String loanDate = sc.nextLine();
+
+        System.out.print("Ingrese la fecha de devolución: ");
+        String returnDate = sc.nextLine();
+
+        Loan loan = new Loan(customerFound, bookFound, loanDate, returnDate);
+
+        loans.add(loan);
+
+        System.out.println("Préstamo creado correctamente.");
+    }
 
 
     //main
     public static void main(String[] args) {
-       /* createCustomer();
         createCustomer();
-        listCustomers();
-
-        deleteCustomer();
-
-        listCustomers();
-*/
-        createBook();createBook();
-        listBooks();
-        deleteBook();
-        listBooks();
-
+        createBook();
+        createLoan();001
 
     }
 }
