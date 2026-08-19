@@ -284,6 +284,33 @@ public class Main {
 
         System.out.println("Préstamo creado correctamente.");
     }
+    public static void returnLoan() {
+
+        System.out.print("Ingrese el código del libro a devolver: ");
+        String bookCode = sc.nextLine();
+
+        for (Loan loan : loans) {
+
+            if (loan.getBook().getCode().equals(bookCode)) {
+
+                if (!loan.getReturnDate().isEmpty()) {
+                    System.out.println("El préstamo ya fue devuelto.");
+                    return;
+                }
+
+                System.out.print("Ingrese la fecha de devolución: ");
+                String returnDate = sc.nextLine();
+
+                loan.setReturnDate(returnDate);
+                loan.getBook().setAvailable(true);
+
+                System.out.println("Devolución registrada correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Préstamo no encontrado.");
+    }
     public static void listLoans() {
 
         if (loans.isEmpty()) {
@@ -308,6 +335,8 @@ public class Main {
         createCustomer();
         createBook();
         createLoan();
+        listLoans();
+        returnLoan();
         listLoans();
 
     }
