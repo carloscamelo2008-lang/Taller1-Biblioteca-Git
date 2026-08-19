@@ -268,15 +268,19 @@ public class Main {
             return;
         }
 
+        if (!bookFound.isAvailable()) {
+            System.out.println("El libro no está disponible.");
+            return;
+        }
+
         System.out.print("Ingrese la fecha del préstamo: ");
         String loanDate = sc.nextLine();
 
-        System.out.print("Ingrese la fecha de devolución: ");
-        String returnDate = sc.nextLine();
-
-        Loan loan = new Loan(customerFound, bookFound, loanDate, returnDate);
+        Loan loan = new Loan(customerFound, bookFound, loanDate, "");
 
         loans.add(loan);
+
+        bookFound.setAvailable(false);
 
         System.out.println("Préstamo creado correctamente.");
     }
