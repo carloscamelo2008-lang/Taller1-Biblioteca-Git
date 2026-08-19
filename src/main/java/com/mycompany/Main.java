@@ -173,6 +173,39 @@ public class Main {
 
         System.out.println("Libro no encontrado.");
     }
+    public static void updateBook() {
+
+        System.out.print("Ingrese el código del libro a actualizar: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+
+            if (book.getCode().equals(code)) {
+
+                System.out.print("Ingrese el nuevo título: ");
+                String newTitle = sc.nextLine();
+
+                System.out.print("Ingrese el nuevo año de publicación: ");
+                int newPublicationYear = Integer.parseInt(sc.nextLine());
+
+                System.out.print("Ingrese el nuevo autor: ");
+                String newAuthor = sc.nextLine();
+
+                System.out.print("¿El libro está disponible? (true/false): ");
+                boolean newAvailable = Boolean.parseBoolean(sc.nextLine());
+
+                book.setTitle(newTitle);
+                book.setPublicationYear(newPublicationYear);
+                book.setAuthor(newAuthor);
+                book.setAvailable(newAvailable);
+
+                System.out.println("Libro actualizado correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Libro no encontrado.");
+    }
 
 
     //main
@@ -186,9 +219,9 @@ public class Main {
         listCustomers();
 */
         createBook();
-        createBook();
         listBooks();
-        findBook();
+        updateBook();
+        listBooks();
 
 
     }
