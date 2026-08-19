@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void createCustomer(){
         System.out.println("Ingrese el ID del cliente: ");
@@ -230,22 +231,113 @@ public class Main {
 
         System.out.println("Libro no encontrado.");
     }
+    //loan
+    public static void createLoan() {
+
+        System.out.print("Ingrese el ID del cliente: ");
+        String customerId = sc.nextLine();
+
+        Customer customerFound = null;
+
+        for (Customer customer : customers) {
+            if (customer.getId().equals(customerId)) {
+                customerFound = customer;
+                break;
+            }
+        }
+
+        if (customerFound == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        System.out.print("Ingrese el codigo del libro: ");
+        String bookCode = sc.nextLine();
+
+        Book bookFound = null;
+
+        for (Book book : books) {
+            if (book.getCode().equals(bookCode)) {
+                bookFound = book;
+                break;
+            }
+        }
+
+        if (bookFound == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        if (!bookFound.isAvailable()) {
+            System.out.println("El libro no está disponible.");
+            return;
+        }
+
+        System.out.print("Ingrese la fecha del préstamo: ");
+        String loanDate = sc.nextLine();
+
+        Loan loan = new Loan(customerFound, bookFound, loanDate, "");
+
+        loans.add(loan);
+
+        bookFound.setAvailable(false);
+
+        System.out.println("Préstamo creado correctamente.");
+    }
+    public static void returnLoan() {
+
+        System.out.print("Ingrese el código del libro a devolver: ");
+        String bookCode = sc.nextLine();
+
+        for (Loan loan : loans) {
+
+            if (loan.getBook().getCode().equals(bookCode)) {
+
+                if (!loan.getReturnDate().isEmpty()) {
+                    System.out.println("El préstamo ya fue devuelto.");
+                    return;
+                }
+
+                System.out.print("Ingrese la fecha de devolución: ");
+                String returnDate = sc.nextLine();
+
+                loan.setReturnDate(returnDate);
+                loan.getBook().setAvailable(true);
+
+                System.out.println("Devolución registrada correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Préstamo no encontrado.");
+    }
+    public static void listLoans() {
+
+        if (loans.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+            return;
+        }
+
+        System.out.println("--- LISTA DE PRESTAMOS ---");
+
+        for (Loan loan : loans) {
+            System.out.println("Clente: " + loan.getCustomer().getName());
+            System.out.println("Libro: " + loan.getBook().getTitle());
+            System.out.println("Fecha de préstamo: " + loan.getLoanDate());
+            System.out.println("Fecha de devolución: " + loan.getReturnDate());
+            System.out.println("-------------------------");
+        }
+    }
+
 
     //main
     public static void main(String[] args) {
-       /* createCustomer();
         createCustomer();
-        listCustomers();
-
-        deleteCustomer();
-
-        listCustomers();
-*/
-        createBook();createBook();
-        listBooks();
-        deleteBook();
-        listBooks();
-
+        createBook();
+        createLoan();
+        listLoans();
+        returnLoan();
+        listLoans();
 
     }
 }
