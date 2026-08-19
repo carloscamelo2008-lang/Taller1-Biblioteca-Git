@@ -112,18 +112,42 @@ public class Main {
 
 
     //book
+    public static void createBook() {
+
+        System.out.print("Ingrese el codigo del libro: ");
+        String code = sc.nextLine();
+
+        System.out.print("Ingrese el titulo del libro: ");
+        String title = sc.nextLine();
+
+        System.out.print("Ingrese el año de publicacion: ");
+        int publicationYear = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Ingrese el autor del libro: ");
+        String author = sc.nextLine();
+
+        System.out.print("¿El libro esta disponible? (true/false): ");
+        boolean available = Boolean.parseBoolean(sc.nextLine());
+
+        Book book = new Book(code, title, publicationYear, author, available);
+
+        books.add(book);
+
+        System.out.println("Libro creado correctamente.");
+    }
 
 
     //main
     public static void main(String[] args) {
-        createCustomer();
+       /* createCustomer();
         createCustomer();
         listCustomers();
 
         deleteCustomer();
 
         listCustomers();
-
+*/
+        createBook();
 
 
     }
