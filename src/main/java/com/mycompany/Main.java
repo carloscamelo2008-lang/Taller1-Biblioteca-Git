@@ -7,6 +7,7 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void createCustomer(){
         System.out.println("Ingrese el ID del cliente: ");
@@ -108,6 +109,9 @@ public class Main {
 
         System.out.println("Cliente no encontrado.");
     }
+
+
+    //book
 
 
     //main
