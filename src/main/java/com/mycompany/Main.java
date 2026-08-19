@@ -153,6 +153,26 @@ public class Main {
             System.out.println("----------------------------");
         }
     }
+    public static void findBook() {
+
+        System.out.print("Ingrese el codigo del libro a buscar: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+
+            if (book.getCode().equals(code)) {
+                System.out.println("--- LIBRO ENCONTRADO ---");
+                System.out.println("Código: " + book.getCode());
+                System.out.println("Título: " + book.getTitle());
+                System.out.println("Año de publicación: " + book.getPublicationYear());
+                System.out.println("Autor: " + book.getAuthor());
+                System.out.println("Disponible: " + book.isAvailable());
+                return;
+            }
+        }
+
+        System.out.println("Libro no encontrado.");
+    }
 
 
     //main
@@ -168,6 +188,7 @@ public class Main {
         createBook();
         createBook();
         listBooks();
+        findBook();
 
 
     }
