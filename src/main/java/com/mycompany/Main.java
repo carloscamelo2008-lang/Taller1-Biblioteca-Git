@@ -135,6 +135,24 @@ public class Main {
 
         System.out.println("Libro creado correctamente.");
     }
+    public static void listBooks() {
+
+        if (books.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+
+        System.out.println("--- LISTA DE LIBROS ---");
+
+        for (Book book : books) {
+            System.out.println("Codigo: " + book.getCode());
+            System.out.println("Titulo: " + book.getTitle());
+            System.out.println("Año de publicacion: " + book.getPublicationYear());
+            System.out.println("Autor: " + book.getAuthor());
+            System.out.println("Disponible: " + book.isAvailable());
+            System.out.println("----------------------------");
+        }
+    }
 
 
     //main
@@ -148,6 +166,8 @@ public class Main {
         listCustomers();
 */
         createBook();
+        createBook();
+        listBooks();
 
 
     }
