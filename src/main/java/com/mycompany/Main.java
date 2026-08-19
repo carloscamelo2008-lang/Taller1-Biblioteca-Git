@@ -251,7 +251,7 @@ public class Main {
             return;
         }
 
-        System.out.print("Ingrese el código del libro: ");
+        System.out.print("Ingrese el codigo del libro: ");
         String bookCode = sc.nextLine();
 
         Book bookFound = null;
@@ -280,13 +280,31 @@ public class Main {
 
         System.out.println("Préstamo creado correctamente.");
     }
+    public static void listLoans() {
+
+        if (loans.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+            return;
+        }
+
+        System.out.println("--- LISTA DE PRESTAMOS ---");
+
+        for (Loan loan : loans) {
+            System.out.println("Clente: " + loan.getCustomer().getName());
+            System.out.println("Libro: " + loan.getBook().getTitle());
+            System.out.println("Fecha de préstamo: " + loan.getLoanDate());
+            System.out.println("Fecha de devolución: " + loan.getReturnDate());
+            System.out.println("-------------------------");
+        }
+    }
 
 
     //main
     public static void main(String[] args) {
         createCustomer();
         createBook();
-        createLoan();001
+        createLoan();
+        listLoans();
 
     }
 }
