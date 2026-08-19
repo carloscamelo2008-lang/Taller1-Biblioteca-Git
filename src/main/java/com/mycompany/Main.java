@@ -328,16 +328,171 @@ public class Main {
             System.out.println("-------------------------");
         }
     }
+    public static void customerMenu() {
+
+        while (true) {
+
+            System.out.println("\n----- GESTIÓN DE CLIENTES -----");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Buscar cliente");
+            System.out.println("4. Actualizar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("6. Volver");
+            System.out.print("Seleccione una opción: ");
+
+            String option = sc.nextLine();
+
+            switch (option) {
+
+                case "1":
+                    createCustomer();
+                    break;
+
+                case "2":
+                    listCustomers();
+                    break;
+
+                case "3":
+                    findCustomer();
+                    break;
+
+                case "4":
+                    updateCustomer();
+                    break;
+
+                case "5":
+                    deleteCustomer();
+                    break;
+
+                case "6":
+                    return;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+
+    }
+    public static void bookMenu() {
+
+        while (true) {
+
+            System.out.println("\n===== GESTIÓN DE LIBROS =====");
+            System.out.println("1. Crear libro");
+            System.out.println("2. Listar libros");
+            System.out.println("3. Buscar libro");
+            System.out.println("4. Actualizar libro");
+            System.out.println("5. Eliminar libro");
+            System.out.println("6. Volver");
+            System.out.print("Seleccione una opción: ");
+
+            String option = sc.nextLine();
+
+            switch (option) {
+
+                case "1":
+                    createBook();
+                    break;
+
+                case "2":
+                    listBooks();
+                    break;
+
+                case "3":
+                    findBook();
+                    break;
+
+                case "4":
+                    updateBook();
+                    break;
+
+                case "5":
+                    deleteBook();
+                    break;
+
+                case "6":
+                    return;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+    public static void loanMenu() {
+
+        while (true) {
+
+            System.out.println("\n---- GESTIÓN DE PRÉSTAMOS ---");
+            System.out.println("1. Registrar préstamo");
+            System.out.println("2. Devolver préstamo");
+            System.out.println("3. Listar préstamos");
+            System.out.println("4. Volver");
+            System.out.print("Seleccione una opción: ");
+
+            String option = sc.nextLine();
+
+            switch (option) {
+
+                case "1":
+                    createLoan();
+                    break;
+
+                case "2":
+                    returnLoan();
+                    break;
+
+                case "3":
+                    listLoans();
+                    break;
+
+                case "4":
+                    return;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
 
 
     //main
     public static void main(String[] args) {
-        createCustomer();
-        createBook();
-        createLoan();
-        listLoans();
-        returnLoan();
-        listLoans();
+        while (true) {
 
+            System.out.println("--- SISTEMA DE BIBLIOTECA ----");
+            System.out.println("1. Gestionar clientes");
+            System.out.println("2. Gestionar libros");
+            System.out.println("3. Gestionar préstamos");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            String option = sc.nextLine();
+
+            switch (option) {
+
+                case "1":
+                    customerMenu();
+                    break;
+
+                case "2":
+                    bookMenu();
+                    break;
+
+                case "3":
+                    loanMenu();
+                    break;
+
+                case "4":
+                    System.out.println("Saliendo del sistema...");
+                    return;
+
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+
+
+        }
     }
-}
