@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void createCustomer(){
         System.out.println("Ingrese el ID del cliente: ");
@@ -230,6 +231,8 @@ public class Main {
 
         System.out.println("Libro no encontrado.");
     }
+    //loan
+
 
     //main
     public static void main(String[] args) {
