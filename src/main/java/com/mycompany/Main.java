@@ -207,6 +207,29 @@ public class Main {
         System.out.println("Libro no encontrado.");
     }
 
+    public static void deleteBook() {
+
+        System.out.print("Ingrese el codigo del libro a eliminar: ");
+        String code = sc.nextLine();
+
+        Book bookToDelete = null;
+
+        for (Book book : books) {
+
+            if (book.getCode().equals(code)) {
+                bookToDelete = book;
+                break;
+            }
+        }
+
+        if (bookToDelete != null) {
+            books.remove(bookToDelete);
+            System.out.println("Libro eliminado correctamente.");
+            return;
+        }
+
+        System.out.println("Libro no encontrado.");
+    }
 
     //main
     public static void main(String[] args) {
@@ -218,9 +241,9 @@ public class Main {
 
         listCustomers();
 */
-        createBook();
+        createBook();createBook();
         listBooks();
-        updateBook();
+        deleteBook();
         listBooks();
 
 
